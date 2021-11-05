@@ -16,6 +16,10 @@
 
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
 &lt { quick_tap_ms = <200>; };
+&mt {
+    flavor = "tap-preferred";
+    tapping_term_ms = <200>;
+};
 
 / {
     behaviors {
@@ -24,8 +28,45 @@
             label = "homerow mods";
             #binding-cells = <2>;
             tapping_term_ms = <200>;
+            quick_tap_ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+        };
+        hs: homerow_shifts {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_SHIFTS";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick_tap_ms = <0>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+        hsl: homerow_shifts_layer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_SHIFTS_LAYER";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick_tap_ms = <0>;
+            flavor = "balanced";
+            bindings = <&kp>, <&to>;
+        };
+    td: tapdance {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAPDANCE";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+	bl: layertap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYERTAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&to>, <&kp>;
         };
     };
 
@@ -34,9 +75,9 @@
 
         default_layer {
             bindings = <
-                &kp Q      &kp W      &kp E       &kp R          &kp T         &kp Y            &kp U          &kp I       &kp O      &kp P
-                &hm LGUI A &hm LALT S &hm LCTRL D &hm LSHFT F    &kp G         &kp H            &hm RSHFT J    &hm RCTRL K &hm LALT L &hm LGUI QUOT
-                &kp Z      &kp X      &kp C       &kp V          &kp B         &kp N            &kp M          &kp COMMA   &kp DOT    &kp FSLH
+                &kp Q      &kp D      &kp R       &kp W          &kp B         &kp J            &kp F          &kp U       &kp P      &kp :
+                &hm LGUI A &hm LALT S &hm LCTRL H &hm LSHFT T    &kp G         &kp Y            &hm RSHFT N    &hm RCTRL E &hm LALT O &hm LGUI QUOT
+                &kp Z      &kp X      &kp M       &kp C          &kp V         &kp K            &kp L          &kp COMMA   &kp DOT    &kp FSLH
                                                   &lt NAV_L TAB  &kp ENTER     &lt NUM_L SPACE  &lt SYM_L BKSP
             >;
         };
